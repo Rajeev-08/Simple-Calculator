@@ -57,3 +57,13 @@ body {
 .btn:active {
     background-color: #ccc;
 }
+
+@media (max-width: 600px) {
+    .buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .btn {
+        padding: 15px;
+        font-size: 1.2em;
+    }
+}
