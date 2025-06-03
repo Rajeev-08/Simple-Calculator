@@ -1,28 +1,28 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const display = document.getElementById('display');
-    const buttons = document.querySelectorAll('.btn');
-    const clearButton = document.getElementById('clear');
-    let currentInput = '';
-    let operatorUsed = false;
+window.onload = function () {
+    var display = document.getElementById('display');
+    var buttons = document.getElementsByClassName('btn');
+    var input = '';
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            const value = button.dataset.value;
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () {
+            var value = this.getAttribute('data-value');
+
             if (value === 'C') {
-                currentInput = '';
+                input = '';
                 display.textContent = '';
             } else if (value === '=') {
                 try {
-                    currentInput = eval(currentInput).toString();
-                    display.textContent = currentInput;
+                    var result = eval(input);
+                    display.textContent = result;
+                    input = result.toString();
                 } catch (e) {
                     display.textContent = 'Error';
-                    currentInput = '';
+                    input = '';
                 }
             } else {
-                currentInput += value;
-                display.textContent = currentInput;
+                input += value;
+                display.textContent = input;
             }
-        });
-    });
-});
+        };
+    }
+};
